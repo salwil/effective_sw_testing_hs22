@@ -33,7 +33,7 @@ To work on an exercise, you have to import this `pom.xml` file into your
 preferred IDE (recommended: IntelliJ IDEA CE).
 
 ### Structure of an Exercise
-Every exercise contains a `src` folder, which contains at least two files,
+Every exercise contains an `src` folder, which contains at least two files,
 `ExerciseName.java` and `ExerciseNameTest.java`. The file without `Test` suffix
 is the file that you need to test, the file with the `Test` suffix is the file
 where you have to write your solution.

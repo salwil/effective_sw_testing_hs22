@@ -20,7 +20,7 @@ The tests are going to be evaluated according to the points 1 and 2, also by usi
 
 ## Description
 
-Reverse the given string. Iterate through each character of that string, compare the absolute difference in the ASCII values of the characters at positions 0 and 1, 1 and 2, 2 and 3 and so on to the end. If the list of absolute differences is the same for both strings, they are funny otherwise not.
+Reverse the given string. Iterate through each character of that string, compare the absolute difference in the ASCII values of the characters at positions 0 and 1, 1 and 2, 2 and 3 and so on to the end. If the list of absolute differences is the same for both strings, they are funny otherwise not. An empty String is considered to be a funny word.
 
 ### Example 1
 
@@ -41,7 +41,7 @@ Since each comparison is equal so given string is funny.
 
 ### Example 2
 
-**Input**: `bdwy`
+**Input**: `bdwz`
 
 **Output**: `false`
 
