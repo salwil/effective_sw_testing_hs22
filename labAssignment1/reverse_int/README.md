@@ -15,35 +15,29 @@ The tests are going to be evaluated according to the points 1 and 2, also by usi
 
 ---
 
-# Problem: Funny Word Check
-(Inspired by [GfG's Funny String](https://www.geeksforgeeks.org/funny-string/))
+# Problem: Combination Sum
+
+(Inspired by [LeetCode's Reverse Integer problem](https://leetcode.com/problems/reverse-integer/))
 
 ## Description
 
-Reverse the given string. Iterate through each character of that string, compare the absolute difference in the ASCII values of the characters at positions 0 and 1, 1 and 2, 2 and 3 and so on to the end. If the list of absolute differences is the same for both strings, they are funny otherwise not. An empty String is considered to be a funny word.
+Given a signed 32-bit integer x, return x **with its digits reversed**. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
 
 ### Example 1
 
-**Input**: `HKMNPS`
-
-**Output**: `true`
-
-**Explanation**:  
-Let r be the reverse of original string s  
-`s = "HKMNPS`  
-`r = "SPNMKH"`  
-`|H-K| = 3  = |S-P|`  
-`|K-M| = 2  = |P-N|`  
-`|M-N| = 1  = |N-M|`  
-`|N-P| = 2  = |M-K|`  
-`|P-S| = 3  = |K-H|`  
-Since each comparison is equal so given string is funny.
+**Input**: `x = 123`  
+**Output**: `321`
 
 ### Example 2
 
-**Input**: `bdwz`
+**Input**: `x = -123`  
+**Output**: `-321`
 
-**Output**: `false`
+### Example 3
+
+**Input**: `x = 120`  
+**Output**: `21`
 
 ### Constraints
--   `1 <= n <= 10`, n = length of the input String
+-   `-2 <sup>31</sup> <= x <= 2 <sup>31</sup> - 1`
+

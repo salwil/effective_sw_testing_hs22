@@ -2,10 +2,9 @@ package zest;
 
 import org.junit.jupiter.api.Test;
 
-class FunnyWordTest {
+class ReverseIntegerTest {
 
     @Test
-    void isFunnyWord() {
-
+    void reverseInt() {
     }
 }
