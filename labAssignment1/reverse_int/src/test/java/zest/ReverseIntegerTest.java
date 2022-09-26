@@ -30,14 +30,14 @@ class ReverseIntegerTest {
 
     public static Stream<Arguments> maxIntegers() {
         return Stream.of(
-                Arguments.of(0, 2147483647)
-                //Arguments.of(214748364, 463847412),
-                //Arguments.of(214748374, 473847412)
+                Arguments.of(0, 2147483647),
+                Arguments.of(214748364, 463847412),
+                Arguments.of(214748374, 473847412),
                 //Arguments.of(463847412, 2147483647 / 10),
                 //Arguments.of(563847412, 2147483647 / 10 + 1),
-                //Arguments.of(0, 2147483647 + 1)
-                //Arguments.of(0, 2147447417),
-                //Arguments.of(2147447412, 2147447412)
+                Arguments.of(0, 2147483647 + 1),
+                Arguments.of(0, 2147447417),
+                Arguments.of(2147447412, 2147447412)
         );
     }
 
@@ -49,13 +49,13 @@ class ReverseIntegerTest {
 
     public static Stream<Arguments> minIntegers() {
         return Stream.of(
-                Arguments.of(-214748364, -463847412)
-                //Arguments.of(-214748365, -563847412),
-                //Arguments.of(-214748366, -663847412),
-                //Arguments.of(0, -2147483648),
+                Arguments.of(-214748364, -463847412),
+                Arguments.of(-214748365, -563847412),
+                Arguments.of(-214748366, -663847412),
+                Arguments.of(0, -2147483648),
                 //Arguments.of(0, -2147483648 - 1),
-                //Arguments.of(0, -2147483647),
-                //Arguments.of(-2147447412, -2147447412)
+                Arguments.of(0, -2147483647),
+                Arguments.of(-2147447412, -2147447412)
         );
     }
 
