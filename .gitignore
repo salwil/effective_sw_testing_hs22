@@ -2,3 +2,4 @@
 target/
 andy/
 .jqwik-database
+config/
