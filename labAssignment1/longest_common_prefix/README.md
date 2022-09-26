@@ -15,29 +15,28 @@ The tests are going to be evaluated according to the points 1 and 2, also by usi
 
 ---
 
-# Problem: Combination Sum
+# Problem: Longest common prefix
 
-(Inspired by [LeetCode's Reverse Integer problem](https://leetcode.com/problems/reverse-integer/))
+(Inspired by [LeetCode's Longest common prefix problem](https://leetcode.com/problems/longest-common-prefix/))
 
 ## Description
 
-Given a signed 32-bit integer x, return x **with its digits reversed**. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
-
+Write a function to find the longest common prefix string amongst an array of strings.  
+If there is no common prefix, return an empty string "".
 ### Example 1
 
-**Input**: `x = 123`  
-**Output**: `321`
+**Input**: `strs = ["flower","flow","flight"]`  
+**Output**: `fl`
 
 ### Example 2
 
-**Input**: `x = -123`  
-**Output**: `-321`
-
-### Example 3
-
-**Input**: `x = 120`  
-**Output**: `21`
+**Input**: strs = ["dog","racecar","car"]`  
+**Output**: `""`
+**Explanation**: No common prefix among the input strings.
 
 ### Constraints
--   -2 <sup>31</sup> <= x <= 2 <sup>31</sup> - 1
+- `1 <= strs.length <= 200`
+- `0 <= strs[i].length <= 200 `
+- `strs[i]` consists of only lowercase English letters.
+
 
