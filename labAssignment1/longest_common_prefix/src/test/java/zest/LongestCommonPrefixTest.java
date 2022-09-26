@@ -16,7 +16,7 @@ class LongestCommonPrefixTest {
                 Arguments.of(new String[]{"abc", "acd"}, "a"),
                 Arguments.of(new String[]{"abcd", "abc", "ab"}, "ab"),
                 Arguments.of(new String[]{"b", "b"}, "b"),
-                // The three test cases below are enough for the Andy assessment,
+                // The three test cases below are enough for branch and mutation coverage,
                 // but we should add some more variants and corner test cases:
                 Arguments.of(new String[]{"abc", "abd"}, "ab"),
                 Arguments.of(new String[]{"b"}, "b"),
@@ -30,7 +30,7 @@ class LongestCommonPrefixTest {
                 Arguments.of(new String[]{"abc", "xyz"}, ""),
                 Arguments.of(new String[]{"bcd", "a"}, ""),
                 Arguments.of(new String[]{"abc", ""}, ""),
-                // The three test cases below are enough for the Andy assessment,
+                // The three test cases below are enough for branch and mutation coverage,
                 // but I prefer to add one more:
                 Arguments.of(new String[]{"a", "bcd"}, "")
         );
