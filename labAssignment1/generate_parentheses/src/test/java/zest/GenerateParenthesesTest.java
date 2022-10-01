@@ -38,19 +38,23 @@ class GenerateParenthesesTest {
         assertEquals(gp.generateParentheses(input), result);
     }
 
-    // For branch and mutation coverage no invalid inputs are required, still we should test it.
+    // For branch and mutation coverage no invalid inputs are required, still we should do a test for it.
     @Test
     public void negativeInput() {
         assertThrows(NegativeArraySizeException.class, () -> gp.generateParentheses(-1));
     }
 
+    // Boundary test
     @Test
     public void inputIsZero() {
         List<String> strings = gp.generateParentheses(0);
         assertEquals(strings, of(""));
     }
 
-    // Finally lets run the method with some random inputs:
+    // Lets run the method with some random inputs.
+    // Note: This test "pseudo-covers" as good as possible with least required effort the boundary of n=8.
+    // Because it's high effort to manually assert all possible well-formed combinations from eight parantheses
+    // pairs, I decide this is enough.
     @ParameterizedTest
     @MethodSource("validInputs")
     public void generateParanthesesRandomInputs(int input) {
