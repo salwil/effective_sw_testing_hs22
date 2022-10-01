@@ -14,6 +14,10 @@ class FunnyWordTest {
 
     private final FunnyWord funnyWord = new FunnyWord();
 
+    /**
+     * Note: boundary of string length == 10 is tested here. 10 is the off-point, because the on-point (11)
+     * evaluates the expression to false.
+     */
     public static Stream<Arguments> funnyWords() {
         return Stream.of(
                 Arguments.of("HKMNPS"),
@@ -54,6 +58,7 @@ class FunnyWordTest {
         assertFalse(funnyWord.checkFunny(word));
     }
 
+    // Boundary test for string length > 10 (11 is the on point)
     @Test
     void isNotFunnyWordBecauseTooLong() {
         assertFalse(funnyWord.checkFunny("ABCDEFEDCBA"));
