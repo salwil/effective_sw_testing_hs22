@@ -25,9 +25,9 @@ class FunnyWordTest {
     }
 
     /**
-     * Inputs vary as few as possible and that we make the difference to a funny word
-     * as small as possible (by only changing one single letter). That's how the chance
-     * of catching boundary bugs increases.
+     * Note: Inputs vary as few as possible so that the difference to a funny word is
+     * as small as possible (by only changing one single letter). That's a strategy to
+     * increase the chance of catching boundary bugs increases.
      */
     public static Stream<Arguments> notFunnyWords() {
         return Stream.of(
@@ -60,8 +60,8 @@ class FunnyWordTest {
     }
 
     /**
-     * With the below tests, Andy's assessment is 100/100. Nevertheless, there are some tests that
-     * might make sense, especially for corner cases (based on the specification).
+     * With the above tests, branch and mutation coverage are achieved. Nevertheless, there are some
+     * tests that might make sense, especially for corner cases (based on the specification).
      */
     @Test
     void isFunnyWordEmpty() {
