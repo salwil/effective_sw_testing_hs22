@@ -15,7 +15,7 @@ The tests are going to be evaluated according to the points 1 and 2, also by usi
 
 ---
 
-# Problem: Combination Sum
+# Problem: Reverse Integer
 
 (Inspired by [LeetCode's Reverse Integer problem](https://leetcode.com/problems/reverse-integer/))
 
