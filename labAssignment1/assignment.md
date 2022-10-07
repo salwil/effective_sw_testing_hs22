@@ -4,7 +4,7 @@
   - One single zip file containing all the folders that you find attached to
     this assignment, but where you also have implemented the tests, as required
     in the `README.md` file of each folder.
-- Deadline: Oct 31, 2022 at 17:00 (Zurich, CH, time).
+- Deadline: Nov 06, 2022 at 17:00 (Zurich, CH, time).
 
 
 ## Evaluation
