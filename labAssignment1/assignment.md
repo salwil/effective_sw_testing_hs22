@@ -4,19 +4,18 @@
   - One single zip file containing all the folders that you find attached to
     this assignment, but where you also have implemented the tests, as required
     in the `README.md` file of each folder.
-- Deadline: Nov 06, 2022 at 17:00 (Zurich, CH, time).
+- Deadline: Nov 06, 2022 at 18:00 (Zurich, CH, time).
 
 
 ## Evaluation
 Each student is expected to carefully work on this assignment, according to
 the instruction given in each exercise (see `README.md` file within each
-exercise folder). An assignment is considered as *valid* and counted for the
-bonus points if it shows clear evidence of careful and substantial work.
+exercise folder). An assignment is considered as *valid* if it shows clear evidence of careful and substantial work.
 
 Please note that the lab assignments are propaedeutic to a proper preparation
 for the final exam, which will also include exercises similar to those done in
 the lab assignments. Therefore, the lab work should be considered as important
-not only for the bonus points, but also for preparing the final exam.
+not only for the bonus/penalty points, but also for preparing the final exam.
 
 
 ## Overall instructions
@@ -27,8 +26,8 @@ website; feel free to use that website for training purposes.
 
 ### Importing an Exercise
 To open an exercise, you have to choose a folder which corresponds to a
-category of an exercise. In that folder, there is a `README.md` file explaining
-the exercise and a `pom.xml` file, which contains the full project structure.
+category of an exercise. In that folder, there is a `README.md` file (which explains
+the exercise) and a `pom.xml` file (which contains the full project structure).
 To work on an exercise, you have to import this `pom.xml` file into your
 preferred IDE (recommended: IntelliJ IDEA CE).
 

@@ -22,21 +22,24 @@ The tests are going to be evaluated according to the points 1 and 2, also by usi
 
 Given `n` pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
 
+### Constraints
+-   `1 <= n <= 8`
 
-### Example 1
+### Examples
+
+#### Example 1
 
 **Input**: `n = 3`
 
 **Output**: `["((()))","(()())","(())()","()(())","()()()"]`
 
 
-### Example 2
+#### Example 2
 
 **Input**: `n = 1`
 
 **Output**: `["()"] `
 
 
-### Constraints
--   `1 <= n <= 8`
+
 
