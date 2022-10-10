@@ -23,20 +23,25 @@ The tests are going to be evaluated according to the points 1 and 2, also by usi
 
 Write a function to find the longest common prefix string amongst an array of strings.  
 If there is no common prefix, return an empty string "".
-### Example 1
-
-**Input**: `strs = ["flower","flow","flight"]`  
-**Output**: `fl`
-
-### Example 2
-
-**Input**: strs = ["dog","racecar","car"]`  
-**Output**: `""`
-**Explanation**: No common prefix among the input strings.
 
 ### Constraints
 - `1 <= strs.length <= 200`
 - `0 <= strs[i].length <= 200 `
 - `strs[i]` consists of only lowercase English letters.
+
+### Examples
+
+#### Example 1
+
+**Input**: `strs = ["flower","flow","flight"]`  
+**Output**: `fl`
+
+#### Example 2
+
+**Input**: strs = ["dog","racecar","car"]`  
+**Output**: `""`
+**Explanation**: No common prefix among the input strings.
+
+
 
 
