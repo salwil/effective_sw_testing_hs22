@@ -3,7 +3,7 @@ package zest;
 import net.jqwik.api.*;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class MaxLongTest {
 
@@ -14,7 +14,7 @@ class MaxLongTest {
             @ForAll ("maxValues") long max,
             @ForAll ("notMaxValues") long notMax,
             @ForAll ("notMaxValues") long otherNotMax) {
-        assertTrue(maxLong.max(max, notMax, otherNotMax) == max);
+        assertEquals(max, maxLong.max(max, notMax, otherNotMax));
     }
 
     @Property
@@ -22,7 +22,7 @@ class MaxLongTest {
             @ForAll ("maxValues") long max,
             @ForAll ("notMaxValues") long notMax,
             @ForAll ("notMaxValues") long otherNotMax) {
-        assertTrue(maxLong.max(notMax, max, otherNotMax) == max);
+        assertEquals(max, maxLong.max(notMax, max, otherNotMax));
     }
 
     @Property
@@ -30,7 +30,7 @@ class MaxLongTest {
             @ForAll ("maxValues") long max,
             @ForAll ("notMaxValues") long notMax,
             @ForAll ("notMaxValues") long otherNotMax) {
-        assertTrue(maxLong.max(notMax, otherNotMax, max) == max);
+        assertEquals(max, maxLong.max(notMax, otherNotMax, max));
     }
 
     // Small ranges are chosen such that not too many combinations are possible i.e. combinations like all values
@@ -57,13 +57,13 @@ class MaxLongTest {
     @Test
     void largestPossibleValue ()
     {
-        assertTrue(maxLong.max(Long.MAX_VALUE, 8, 3) == Long.MAX_VALUE);
+        assertEquals(Long.MAX_VALUE, maxLong.max(Long.MAX_VALUE, 8, 3));
     }
 
     @Test
     void smallestPossibleValue ()
     {
-        assertTrue(maxLong.max(Long.MIN_VALUE, 8, 3) == 8);
+        assertEquals(8, maxLong.max(Long.MIN_VALUE, 8, 3) );
     }
 
     // Note: it's not possible (and also not necessary) to achieve 100% mutation coverage for this task. The
