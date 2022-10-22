@@ -27,7 +27,8 @@ class GenerateParenthesesTest {
     }
 
     static Stream<Arguments> validInputs() {
-        IntStream stream = IntStream.range(1, 9);
+        // starting with 4, because 1,2,3 are tested in generateParentheses()
+        IntStream stream = IntStream.range(4, 9);
         Stream<Arguments> arguments = stream.mapToObj(argument -> Arguments.of(argument));
         return arguments;
     }
@@ -52,8 +53,8 @@ class GenerateParenthesesTest {
     }
 
     // Lets run the method with some random inputs.
-    // Note: This test "pseudo-covers" as good as possible with least required effort the boundary of n=8.
-    // Because it's high effort to manually assert all possible well-formed combinations from eight parantheses
+    // Note: This test "pseudo-covers" as good as possible with least required effort the method call for all allowed
+    // inputs. Because it's high effort to manually assert all possible well-formed combinations from eight parantheses
     // pairs, I decide this is enough.
     @ParameterizedTest
     @MethodSource("validInputs")

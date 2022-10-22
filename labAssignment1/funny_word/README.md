@@ -23,7 +23,7 @@ The tests are going to be evaluated according to the points 1 and 2, also by usi
 Reverse the given string. Iterate through each character of that string, compare the absolute difference in the ASCII values of the characters at positions 0 and 1, 1 and 2, 2 and 3 and so on to the end. If the list of absolute differences is the same for both strings, they are funny otherwise not. An empty String is considered to be a funny word.
 
 ### Constraints
--   `1 <= n <= 10`, n = length of the input String
+-   `0 <= n <= 10`, n = length of the input String
 
 ### Examples
 
