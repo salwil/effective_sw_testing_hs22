@@ -50,7 +50,7 @@ class Zeroes2EndTest {
         Arbitrary<Integer> integers = Arbitraries.frequency(
                 Tuple.of(1, Arbitraries.just(0)),
                 Tuple.of(1, Arbitraries.integers().between(1, 7))
-        ).flatMap(Function.identity()); //
+        ).flatMap(Function.identity()); // flatten down the structure, map elements to themselves
         return integers.array(Integer[].class).ofMinSize(0).ofMaxSize(10);
     }
 
