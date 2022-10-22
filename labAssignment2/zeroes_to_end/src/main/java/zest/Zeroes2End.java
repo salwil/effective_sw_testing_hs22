@@ -5,12 +5,11 @@ package zest;
  */
 class Zeroes2End {
 
-    public int[] pushZeroesToEnd(int arr[], int n) {
-        if(n == 0 || arr.length != n){
-            int temp[] = {};
-            return temp;
+    public int[] pushZeroesToEnd(int arr[]) {
+        if(arr.length == 0 || arr.length >= 10){
+            return new int[0];
         }
-        int temp[] = new int[n];
+        int temp[] = new int[arr.length];
         int t = 0;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] != 0) {
