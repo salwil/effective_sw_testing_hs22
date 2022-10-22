@@ -16,7 +16,7 @@ You find the implementation of the problem's solution in the folder `src/main/ja
 
 ---
 
-# Problem: Design Parking System
+# Problem: Maximum value
 
 (Inspired by [Apache Commons Lang: long max](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/math/NumberUtils.html#max-long...-))
 
