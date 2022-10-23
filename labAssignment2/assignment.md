@@ -1,4 +1,4 @@
-# Effective Software Testing Lab (Assignment 1)
+# Effective Software Testing Lab (Assignment 2)
 
 - Deliverable:
   - One single zip file containing all the folders that you find attached to
@@ -37,7 +37,7 @@ Every exercise contains an `src` folder, which contains at least two files,
 `ExerciseName.java` and `ExerciseNameTest.java`. The file without `Test` suffix
 is the file that you need to test, the file with the `Test` suffix is the file
 where you have to write your solution. In the mockito-exercise there are not only
-tests but also some enhancements in the class under test as part of the solution
+tests, but also some enhancements in the class under test as part of the solution
 required.
 
 For `andy` to work properly, you should not add any other files to the
