@@ -8,4 +8,4 @@ config/
 /out
 /build
 .build
-
+.bat
