@@ -1,131 +1,122 @@
 package zest;
 
-import net.jqwik.api.*;
-import net.jqwik.api.constraints.IntRange;
-import net.jqwik.api.constraints.Size;
-import org.junit.jupiter.api.Test;
+/* Credits for this beautiful solution to
+ *    Title: ParkingSystemTest
+ *    Author: Bachmann, Lucius
+ *    Email: lucius.bachmann@uzh.ch
+ *    Event: EST, FS 2022
+ */
 
-import java.util.List;
-import java.util.function.Function;
+import net.jqwik.api.*;
+import net.jqwik.api.stateful.Action;
+import net.jqwik.api.stateful.ActionSequence;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 class ParkingSystemTest {
 
     @Property
-    void testParkingSystemAddCarSuccess(@ForAll @Size(value = 3) List<@IntRange(min = 5, max = 10) Integer> parkingSystem, @ForAll @IntRange(min = 1, max = 3) int car) {
-        ParkingSystem ps = new ParkingSystem(parkingSystem.get(0), parkingSystem.get(1), parkingSystem.get(2));
-        assertTrue(ps.addCar(car));
+    void takesCarsUntilFull(
+            @ForAll("validParkingSystems") ParkingSystem parkingSystem,
+            @ForAll("parkActionSequences") ActionSequence<ParkingSystem> actionSequence) {
+        actionSequence.run(parkingSystem);
     }
 
-    @Property
-    void testParkingSystemAddCarValid(@ForAll("largeEnoughParkingSystem") ParkingSystem parkingSystem,
-                                      @ForAll("validPlacements") Integer[] placements) {
-        for (Integer placement : placements) {
-            assertTrue(parkingSystem.addCar(placement));
-        }
+    @ParameterizedTest
+    @CsvSource({
+            "-1,1,1",
+            "1,-1,1",
+            "1,1,-1",
+            "1001,1,1",
+            "1,1001,1",
+            "1,1,1001"
+    })
+    void validatesParkingSpaceSizes(int big, int medium, int small) {
+        assertThrows(RuntimeException.class, () -> new ParkingSystem(big, medium, small));
     }
 
-    @Property
-    void testParkingSystemAddCarFail(@ForAll("tooSmallParkingSystem") ParkingSystem parkingSystem,
-                                     @ForAll("bigPlacements") Integer[] bigPlacements,
-                                     @ForAll("mediumPlacements") Integer[] mediumPlacements,
-                                     @ForAll("smallPlacements") Integer[] smallPlacements) {
-        Boolean spaceAvailable = true;
-        for (Integer placement : bigPlacements) {
-            spaceAvailable = parkingSystem.addCar(placement);
-        }
-        assertFalse(spaceAvailable);
-        spaceAvailable = true;
-        for (Integer placement : mediumPlacements) {
-            spaceAvailable = parkingSystem.addCar(placement);
-        }
-        assertFalse(spaceAvailable);
-        spaceAvailable = true;
-        for (Integer placement : smallPlacements) {
-            spaceAvailable = parkingSystem.addCar(placement);
-        }
-        assertFalse(spaceAvailable);
-    }
-
-    @Test
-    void moreThan999Cars() {
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 4})
+    void throwsForInvalidCar(int invalidCarType) {
         ParkingSystem parkingSystem = new ParkingSystem(1000, 1000, 1000);
-        IntStream.range(0, 500).forEach(__ -> parkingSystem.addCar(1));
-        IntStream.range(0, 250).forEach(__ -> parkingSystem.addCar(2));
-        IntStream.range(0, 250).forEach(__ -> parkingSystem.addCar(3));
-        assertThrows(RuntimeException.class, () -> parkingSystem.addCar(3));
+
+        assertThrows(RuntimeException.class, () -> parkingSystem.addCar(invalidCarType));
     }
 
     @Test
-    void tooBigParkingSystemThrowsException() {
-        assertThrows(RuntimeException.class, () -> new ParkingSystem(1001, 1000, 1000));
-        assertThrows(RuntimeException.class, () -> new ParkingSystem(1000, 1001, 1000));
-        assertThrows(RuntimeException.class, () -> new ParkingSystem(1000, 1000, 1001));
+    void throwsFor1000stCar() {
+        ParkingSystem parkingSystem = new ParkingSystem(1000, 1000, 1000);
+        IntStream.range(0, 1000).forEach(__ -> parkingSystem.addCar(1));
+
+        assertThrows(RuntimeException.class, () -> parkingSystem.addCar(1));
     }
 
-    @Test
-    void wrongCarTypeThrowsException() {
-        ParkingSystem ps = new ParkingSystem(1, 2, 3);
-        assertThrows(RuntimeException.class, () -> ps.addCar(-1));
-        assertThrows(RuntimeException.class, () -> ps.addCar(4));
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2, 3})
+    void returnsFalseIfNoSpaceForCarType(int carType) {
+        ParkingSystem emptyParkingSystem = new ParkingSystem(0, 0, 0);
+
+        assertThat(emptyParkingSystem.addCar(carType)).isFalse();
+
+        ParkingSystem parkingSystemWithSpace = new ParkingSystem(10, 10, 10);
+        IntStream.range(0, 10).forEach(__ -> parkingSystemWithSpace.addCar(carType));
+
+        assertThat(parkingSystemWithSpace.addCar(carType)).isFalse();
     }
 
-    @Test
-    void tooSmallParkingSystemThrowsException() {
-        assertThrows(RuntimeException.class, () -> new ParkingSystem(-1, 1000, 1000));
-        assertThrows(RuntimeException.class, () -> new ParkingSystem(1000, -1, 1000));
-        assertThrows(RuntimeException.class, () -> new ParkingSystem(1000, 1000, -1));
-    }
-
+    /**
+     * I started with a maximum of 1000 actions and all the ParkingSystems, but that did not always work.
+     * Then I tried to filter out ParkingSystems with the sum of all Parking Spaces greater than some number,
+     * but jqwik always found the case were one of the sizes was 0 were it only had to park few cars to break the test.
+     * With all ParkingSpot sizes at least 400 times available and 999 actions at max, the test runs through now
+     * and tests something meaningful.
+     */
+    @SuppressWarnings("unused")
     @Provide
-    static Arbitrary<ParkingSystem> largeEnoughParkingSystem() {
-        Arbitrary<Integer> big = Arbitraries.integers().between(400, 1000);
-        Arbitrary<Integer> medium = Arbitraries.integers().between(400, 1000);
-        Arbitrary<Integer> small = Arbitraries.integers().between(400, 1000);
-        return Combinators.combine(big, medium, small)
+    private Arbitrary<ParkingSystem> validParkingSystems() {
+        Arbitrary<Integer> parkingSpaceSize = Arbitraries.integers().between(400, 1000);
+        return Combinators.combine(parkingSpaceSize, parkingSpaceSize, parkingSpaceSize)
                 .as(ParkingSystem::new);
     }
 
+    @SuppressWarnings("unused")
     @Provide
-    Arbitrary<Integer[]> validPlacements() {
-        Arbitrary<Integer> integerArbitrary = Arbitraries.integers().between(1, 3);
-        return integerArbitrary
-                .array(Integer[].class).ofMinSize(0).ofMaxSize(30)
-                .map(Function.identity());
+    private Arbitrary<ActionSequence<ParkingSystem>> parkActionSequences() {
+        Arbitrary<Action<ParkingSystem>> parkActions = Arbitraries.integers().between(1, 3).map(ParkAction::new);
+        return Arbitraries.sequences(Arbitraries.oneOf(parkActions)).ofMaxSize(999);
     }
 
-    @Provide
-    static Arbitrary<ParkingSystem> tooSmallParkingSystem() {
-        Arbitrary<Integer> big = Arbitraries.integers().between(0, 10);
-        Arbitrary<Integer> medium = Arbitraries.integers().between(0, 10);
-        Arbitrary<Integer> small = Arbitraries.integers().between(0, 10);
-        return Combinators.combine(big, medium, small)
-                .as(ParkingSystem::new);
-    }
+    private static class ParkAction implements Action<ParkingSystem> {
 
-    @Provide
-    Arbitrary<Integer[]> bigPlacements() {
-        Arbitrary<Integer> integerArbitrary = Arbitraries.integers().between(1, 1);
-        return integerArbitrary
-                .array(Integer[].class).ofMinSize(11).ofMaxSize(20)
-                .map(Function.identity());
-    }
+        private final int carType;
 
-    @Provide
-    Arbitrary<Integer[]> mediumPlacements() {
-        Arbitrary<Integer> integerArbitrary = Arbitraries.integers().between(2, 2);
-        return integerArbitrary
-                .array(Integer[].class).ofMinSize(11).ofMaxSize(20)
-                .map(Function.identity());
-    }
+        ParkAction(int carType) {
+            if (carType < 1 || carType > 3)
+                throw new RuntimeException("Only car types 1,2,3 are available");
 
-    @Provide
-    Arbitrary<Integer[]> smallPlacements() {
-        Arbitrary<Integer> integerArbitrary = Arbitraries.integers().between(3, 3);
-        return integerArbitrary
-                .array(Integer[].class).ofMinSize(11).ofMaxSize(20)
-                .map(Function.identity());
+            this.carType = carType;
+        }
+
+        @Override
+        public ParkingSystem run(ParkingSystem state) {
+            assertThat(state.addCar(carType)).isTrue();
+
+            return state;
+        }
+
+        @Override
+        public String toString() {
+            return "ParkAction{" +
+                    "carType=" + carType +
+                    '}';
+        }
     }
 }
