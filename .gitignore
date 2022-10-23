@@ -6,4 +6,6 @@ config/
 /gradle
 .gradle
 /out
+/build
+.build
 
