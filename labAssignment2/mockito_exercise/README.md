@@ -4,7 +4,7 @@
 
 For the following problem and its implementation, you have to (recommended: follow the order below):
 
-Use **test doubles and/or mocks**  for testing the warehouse project, using [Mockito](https://site.mockito.org/). In the documentation
+Use [Mockito](https://site.mockito.org/) **test doubles** for testing the warehouse project. In the documentation
 of the tests (e.g., javadoc) and the naming of the methods/tests, it must be clear what your rationale was behind your testing decision.
 
 Automate the test cases as **JUnit5** test methods, by filling in the example test class located in the folder `src/test/java`.
