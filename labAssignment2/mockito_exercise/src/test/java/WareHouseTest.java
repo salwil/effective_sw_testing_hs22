@@ -13,12 +13,10 @@ import static org.mockito.Mockito.times;
 
 public class WareHouseTest {
 
-    // Note: dependency has to bee added to gradle.build for using Mockito
+    // Note: missing dependency has to bee added to gradle.build for using Mockito
     private WareHouse wh = new WareHouse();
-
     GSTCalculator calculatorSpy = Mockito.spy(GSTCalculator.class);
     ProductRepository productRepositorySpy = Mockito.spy(ProductRepository.class);
-
     EmailService emailServiceSpy = Mockito.spy(EmailService.class);
 
     List<Product> products = List.of(
