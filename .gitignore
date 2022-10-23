@@ -2,3 +2,10 @@
 target/
 andy/
 .jqwik-database
+config/
+gradle/
+wrapper/
+.gradle/
+/out
+build/
+*.bat
