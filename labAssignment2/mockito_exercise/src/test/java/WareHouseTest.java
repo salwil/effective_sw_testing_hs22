@@ -14,7 +14,7 @@ import static org.mockito.Mockito.times;
 public class WareHouseTest {
 
     // Note: missing dependency has to bee added to gradle.build for using Mockito
-    private WareHouse wh = new WareHouse();
+    private WareHouse wareHouse = new WareHouse();
     GSTCalculator calculatorSpy = Mockito.spy(GSTCalculator.class);
     ProductRepository productRepositorySpy = Mockito.spy(ProductRepository.class);
     EmailService emailServiceSpy = Mockito.spy(EmailService.class);
@@ -28,13 +28,13 @@ public class WareHouseTest {
 
     @Test
     void calculatorIsCalledFiveTimes() {
-        wh.processProducts("User", products, calculatorSpy, productRepositorySpy, emailServiceSpy);
+        wareHouse.processProducts("User", products, calculatorSpy, productRepositorySpy, emailServiceSpy);
         Mockito.verify(calculatorSpy, times(5)).calculatePriceWithGST(any(Product.class));
     }
 
     @Test
     void productRepositoryIsCalledWithRightParameters() {
-        wh.processProducts("User", products, calculatorSpy, productRepositorySpy, emailServiceSpy);
+        wareHouse.processProducts("User", products, calculatorSpy, productRepositorySpy, emailServiceSpy);
         for (Product product : this.products) {
             Mockito.verify(productRepositorySpy).save(product, product.getPrice());
         }
@@ -42,7 +42,7 @@ public class WareHouseTest {
 
     @Test
     void emailServiceIsCalledWithRightParameters() {
-        wh.processProducts("User", products, calculatorSpy, productRepositorySpy, emailServiceSpy);
+        wareHouse.processProducts("User", products, calculatorSpy, productRepositorySpy, emailServiceSpy);
         Mockito.verify(emailServiceSpy).sendEmail("User");
     }
 

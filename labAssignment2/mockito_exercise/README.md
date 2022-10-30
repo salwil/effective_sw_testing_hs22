@@ -2,14 +2,14 @@
 
 # Instructions
 
-For the following problem and its implementation, you have to (recommended: follow the order below):
+For the following problem and its implementation, you have to follow the order below:
 
 Use [Mockito](https://site.mockito.org/) **test doubles** for testing the warehouse project. In the documentation
 of the tests (e.g., javadoc) and the naming of the methods/tests, it must be clear what your rationale was behind your testing decision.
 
 Automate the test cases as **JUnit5** test methods, by filling in the example test class located in the folder `src/test/java`.
 
-You find the implementation of the warehouse project in the folder `src/main/java/`.
+You find the (incomplete) implementation of the warehouse project in the folder `src/main/java/`.
 
 ---
 
