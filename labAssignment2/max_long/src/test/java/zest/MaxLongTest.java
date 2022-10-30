@@ -33,8 +33,8 @@ class MaxLongTest {
         assertEquals(max, maxLong.max(notMax, otherNotMax, max));
     }
 
-    // Small ranges are chosen such that not too many combinations are possible i.e. combinations like all values
-    // are the same or two values are the same are covered.
+    // Small ranges are chosen such that not too many combinations are possible so that combinations like all values
+    // are the same or two values are the same are covered for sure.
 
     @Provide
     private Arbitrary<Long> maxValues () {
