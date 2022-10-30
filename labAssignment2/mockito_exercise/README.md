@@ -26,3 +26,6 @@ You have following tasks to accomplish:
 - Test if `calculatePriceWithGST` of `GSTCalculator` is called 5 times.
 - Test if `productRepository` is called with right method parameters
 - Test if `EmailService` is called with right parameters
+# Hints
+- You have to add dependencies to the Gradle build file for using Mockito
+- Completing the implementation of `WareHouse` includes also thoughts about code design that supports dependency injection
