@@ -2,7 +2,7 @@
 
 # Instructions
 
-For the following problem and its implementation, you have to (recommended: follow the order below):
+For the following problem and its implementation, you have to (recommended) follow the order below:
 
 1. Use **property-based testing** techniques to derive tests for this
    method, using [jqwik](https://jqwik.net/) as a platform. In the documentation
@@ -27,7 +27,7 @@ order but with all zeroes moved to the end of the array. If the given array is e
 10 elements, an empty array is returned.
 
 ### Constraints
-`0 >= n >= 10 with n, length of input array`
+`0 >= n <= 10 with n, length of input array`
 
 ### Examples
 #### Example 1
