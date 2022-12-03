@@ -5,8 +5,6 @@ package zest;
  */
 public class Power {
 
-    private int[] array;
-
     public double myPow(double x, int n) {
         if(n<0) return 1/x * myPow(1/x, -(n+1));
         if(n==0) return 1;
