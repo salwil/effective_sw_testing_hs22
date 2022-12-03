@@ -25,7 +25,7 @@ that does it and test that instead.
 
 ## Description
 
-Implement `pow(x, n)`, which calculates `x` raised to the power `n`.
+The `myPow(x, n)` method calculates `x` raised to the power `n`.
 
 ### Example 1
 
@@ -41,7 +41,7 @@ Implement `pow(x, n)`, which calculates `x` raised to the power `n`.
 
 
 ### Constraints
-- `-100.0 < x < 100.0`
-- `-100.0 < n < 100.0`
-- `-10^4 <= x^n <= 10^4`
+- -100.0 < x < 100.0
+- -100.0 < n < 100.0
+- -10<sup>4</sup> <= x<sup>n</sup> <= 10^<sup>4</sup>
 
