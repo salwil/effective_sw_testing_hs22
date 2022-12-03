@@ -2,7 +2,7 @@
 
 # Instructions
 
-This exercise consists of analysing tests from a project, written in the course of the IFI SoPra Module in spring 2022. Write your opinion about two test classes by answering the following questions.
+This exercise consists of analysing tests [^1] from a project[^2], written in the course of the IFI SoPra Module in spring 2022. Write your opinion about two test classes by answering the following questions.
 
 1. What do you think about how the test suites are structured at highlevel? What are advantages of structuring the test suites the way they are, what are disadvantages?
 2. What is the purpose of the classes in the `util` folder?  
@@ -21,5 +21,5 @@ This exercise consists of analysing tests from a project, written in the course 
 
 Write your answers in a `answer.md` file that you put in this folder.
 
-[1] https://github.com/sopra-fs22-group-36/screw-your-neighbor-server/tree/main/src/test/java/ch/uzh/ifi/hase/soprafs22/screwyourneighborserver  
-[2] https://github.com/sopra-fs22-group-36/screw-your-neighbor-server
+[^1]: https://github.com/sopra-fs22-group-36/screw-your-neighbor-server/tree/main/src/test/java/ch/uzh/ifi/hase/soprafs22/screwyourneighborserver  
+[^2]: https://github.com/sopra-fs22-group-36/screw-your-neighbor-server
