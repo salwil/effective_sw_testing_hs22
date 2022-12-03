@@ -1,6 +1,5 @@
 package zest;
 import net.jqwik.api.*;
-import net.jqwik.api.constraints.IntRange;
 import org.junit.jupiter.api.BeforeEach;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
