@@ -21,7 +21,7 @@ public class BetterPower {
     /**
      * Solution inspired by: https://leetcode.com/problems/powx-n/discuss/336569/Java-solution
      */
-    private double computePower(double base, int power) {
+    public double computePower(double base, int power) {
         if (power < 0) return 1 / base * computePower(1 / base, -(power + 1));
         if (power == 0) return 1;
         if (power == 2) return base * base;

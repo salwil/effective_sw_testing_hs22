@@ -4,9 +4,12 @@ import net.jqwik.api.arbitraries.IntegerArbitrary;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.mockito.Mockito;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
+import static org.mockito.ArgumentMatchers.*;
+import static org.mockito.Mockito.when;
 
 class PowerTest {
 
@@ -76,8 +79,25 @@ class PowerTest {
             "5.0, -100",
             "5.0, 100",
     })
+
     void invalidValuesThrowsError(double base, int power) {
         assertThrows(IllegalArgumentException.class, () -> this.power.myPow(base, power));
+    }
+
+    @Test
+    void tooHighResultThrowsError() {
+        // we spy the power object, because we want the computePower method to return a value that is not allowed.
+        BetterPower powerMock = Mockito.spy(this.power);
+        Mockito.doReturn(1E4+0.1).when(powerMock).computePower(Mockito.anyDouble(), Mockito.anyInt());
+        assertThrows(RuntimeException.class, () -> powerMock.myPow(2.0, 3));
+    }
+
+    @Test
+    void dontThrowErrorFor1E4ThrowsError() {
+        // we spy the power object, because we want the computePower method to return a value that is not allowed.
+        BetterPower powerMock = Mockito.spy(this.power);
+        Mockito.doReturn(1E4).when(powerMock).computePower(Mockito.anyDouble(), Mockito.anyInt());
+        assertEquals(1E4, powerMock.myPow(2.0, 3));
     }
 
     @Provide("positive power odd")
