@@ -12,12 +12,6 @@ This exercise consists of analysing tests from a project, written in the course 
 4. Have a look at the `CardValidatorTest`  
    a) In what terms is the `playing_card_with_not_active_turn_throws_error` test a good test and where do you see potential for improval?  
    b) Would it make sense to convert this test into a unittest? Justify your answer.
-5. `RoundTest`  
-   a) How could this test class be improved?  
-   b)
-6. How could the class under test be redesigned to make testing easier?
-7. Do you see potential code quality issues that could lead to decreased code quality when the test further evolves?
-8. What is the purpose of the classes in the util folder? In what terms do they contribute better test code quality?
 
 Write your answers in a `answer.md` file that you put in this folder.
 
