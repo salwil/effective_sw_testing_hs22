@@ -1,4 +1,4 @@
-# Effective Software Testing Lab (Assignment 2)
+# Effective Software Testing Lab (Assignment 3)
 
 - Deliverable:
   - One single zip file containing all the folders that you find attached to
