@@ -66,14 +66,16 @@ class PowerTest {
     // Do some spot check tests where we assert the exact result.
     @Test
     void testNegativePowerExact() {
-        assertEquals(0.04000000000000001, this.power.myPow(5, -2));
-        assertEquals(0.008000000000000002, this.power.myPow(5, -3));
+        assertEquals(0.25, this.power.myPow(2.0, -2));
+        assertEquals(0.04000000000000001, this.power.myPow(5.0, -2));
+        assertEquals(0.008000000000000002, this.power.myPow(5.0, -3));
         assertEquals(8.0, this.power.myPow(0.5, -3));
     }
 
     @Test
     void testPositivePowerExact() {
-        assertEquals(625.0, this.power.myPow(5, 4));
+        assertEquals(1024.0, this.power.myPow(2.0, 10));
+        assertEquals(625.0, this.power.myPow(5.0, 4));
         assertEquals(-0.0010000000000000002, this.power.myPow(-0.1, 3));
     }
 
