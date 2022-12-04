@@ -12,6 +12,7 @@ public class BetterPower {
         }
 
         double result = computePower(x, n);
+
         if (Math.abs(result) > 1E4) {
             throw new RuntimeException("Computed result too high: " + result);
         }
